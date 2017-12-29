@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.curtesmalteser.kitsuexplorer"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+ext {
+    supportLibraryVersion = '27.0.2'
+    retrofitVersion = '2.3.0'
+    daggerVersion = '2.13'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Retrofit 2
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion" // Rest interactions
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion" // JSON parsing
+    compile 'com.google.code.gson:gson:2.8.2' // Gson
+
+    // OkHTTP
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1' // HTTP logging
+
+    // Dagger dependency injection
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$daggerVersion" // if the support libraries are used
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    // RxJava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex.rxjava2:rxjava:2.1.7'
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    // Butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+
+
+}
