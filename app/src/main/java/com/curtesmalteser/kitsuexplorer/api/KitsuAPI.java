@@ -18,4 +18,8 @@ public interface KitsuAPI {
     @GET("anime?page%5Blimit%5D=20")
     Observable<ModelAnime> getAnimeObservable();
 
+    //@GET("manga?page%5Blimit%5D=20")
+    //Observable<ModelAnime> getAnimeObservable();
+
+
 }
